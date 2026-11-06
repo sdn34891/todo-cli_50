@@ -26,6 +26,14 @@ def add(text):
 
 def list_all():
     items = load()
+     def done(index):
+    items = load()
+    if 0 <= index - 1 < len(items):
+        items[index - 1]["done"] = True
+        save(items)
+        print("已完成第", index, "项")
+    else:
+        print("序号不存在")
     if not items:
         print("暂无待办")
         return
@@ -45,6 +53,8 @@ def main():
         list_all()
     else:
         print("命令错误")
+    elif cmd == "done" and len(sys.argv) > 2:
+         done(int(sys.argv[2]))
 
 
 if __name__ == "__main__":
